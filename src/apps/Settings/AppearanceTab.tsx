@@ -9,9 +9,9 @@ export default function AppearanceTab() {
   const setTheme = useSettingsStore((s) => s.setTheme);
 
   const wallpapers = [
-    { path: '/wallpaper-concrete.jpg', name: 'White Concrete' },
-    { path: '/wallpaper-frost.jpg', name: 'Frost Glass' },
-    { path: '/wallpaper-marble.jpg', name: 'Light Marble' },
+    { path: './wallpaper-concrete.jpg', name: 'White Concrete' },
+    { path: './wallpaper-frost.jpg', name: 'Frost Glass' },
+    { path: './wallpaper-marble.jpg', name: 'Light Marble' },
   ];
 
   const accentColors = [

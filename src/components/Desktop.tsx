@@ -141,7 +141,7 @@ export default function Desktop({ onOpenAppMenu }: DesktopProps) {
             Open Terminal Here
           </button>
           <div className="my-1 h-px" style={{ background: 'rgba(0,0,0,0.06)' }} />
-          <button onClick={() => { setWallpaper('/wallpaper-default.jpg'); setContextMenu(null); }}
+          <button onClick={() => { setWallpaper('./wallpaper-concrete.jpg'); setContextMenu(null); }}
             className="w-full text-left px-3 py-1.5 text-sm text-[var(--text-primary)] hover:bg-[var(--bg-hover)] transition-colors">
             Change Background...
           </button>

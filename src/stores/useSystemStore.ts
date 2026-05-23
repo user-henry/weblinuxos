@@ -50,7 +50,7 @@ export const useSystemStore = create<SystemState>((set, get) => ({
   user: {
     username: 'Henry',
     password: '15240254891',
-    avatar: '/user-avatar.jpg',
+    avatar: './user-avatar.png',
   },
   currentTime: new Date(),
   workspaces: [1, 2, 3],

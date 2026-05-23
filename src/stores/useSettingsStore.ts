@@ -69,9 +69,9 @@ export interface SettingsState {
 export const useSettingsStore = create<SettingsState>((set, get) => ({
   theme: 'dark',
   accentColor: '#7D8B96',
-  wallpaper: '/wallpaper-concrete.jpg',
+  wallpaper: './wallpaper-concrete.jpg',
   wallpaperMode: 'fill',
-  workspaceWallpapers: ['/wallpaper-concrete.jpg', '/wallpaper-frost.jpg', '/wallpaper-marble.jpg'],
+  workspaceWallpapers: ['./wallpaper-concrete.jpg', './wallpaper-frost.jpg', './wallpaper-marble.jpg'],
 
   outputVolume: 75,
   inputVolume: 50,
