@@ -22,10 +22,9 @@ export default function CameraApp({ windowId: _windowId }: CameraAppProps) {
         video: { width: { ideal: 1280 }, height: { ideal: 720 }, facingMode: mode },
         audio: false,
       });
-      setStream(s);
       streamRef.current = s;
+      setStream(s);
       setFacingMode(mode);
-      if (videoRef.current) videoRef.current.srcObject = s;
     } catch (e: any) {
       setError('Camera not available. Please allow camera access in browser settings.');
     }
@@ -69,6 +68,15 @@ export default function CameraApp({ windowId: _windowId }: CameraAppProps) {
     const newMode = facingMode === 'user' ? 'environment' : 'user';
     startCamera(newMode);
   };
+
+  // Bind stream to video element after render
+  useEffect(() => {
+    const video = videoRef.current;
+    if (video && stream) {
+      video.srcObject = stream;
+      video.play().catch(() => {});
+    }
+  }, [stream]);
 
   useEffect(() => { return () => { streamRef.current?.getTracks().forEach(t => t.stop()); }; }, []);
 
