@@ -38,7 +38,6 @@ import DiffViewer from '@/apps/DiffViewer';
 import Email from '@/apps/Email';
 import Chat from '@/apps/Chat';
 import Weather from '@/apps/Weather';
-import Maps from '@/apps/Maps';
 import News from '@/apps/News';
 
 // Office apps
@@ -114,7 +113,6 @@ const appComponents: Record<string, ComponentType<{ windowId: string }>> = {
   email: Email,
   chat: Chat,
   weather: Weather,
-  maps: Maps,
   news: News,
 
   // Office

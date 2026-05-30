@@ -133,11 +133,6 @@ const defaultApps: Record<string, AppDefinition> = {
     category: 'Internet', icon: 'CloudSun', component: 'Weather',
     defaultWidth: 450, defaultHeight: 550, minWidth: 350, minHeight: 400, singleton: true,
   },
-  maps: {
-    id: 'maps', name: 'Maps', description: 'Interactive maps and navigation',
-    category: 'Internet', icon: 'Map', component: 'Maps',
-    defaultWidth: 900, defaultHeight: 650, minWidth: 500, minHeight: 400, singleton: true,
-  },
   news: {
     id: 'news', name: 'News Reader', description: 'Read the latest news',
     category: 'Internet', icon: 'Newspaper', component: 'NewsReader',

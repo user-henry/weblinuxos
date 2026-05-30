@@ -90,6 +90,58 @@ export default function FileManager({ windowId }: FileManagerProps) {
           }, 100);
         }
       }
+      // Audio → Music Player
+      else if (['mp3', 'wav', 'ogg', 'flac', 'm4a', 'wma', 'aac', 'opus'].includes(ext)) {
+        const app = registry.getApp('musicplayer');
+        if (app) {
+          winStore.openWindow('musicplayer', node.name, {
+            width: app.defaultWidth,
+            height: app.defaultHeight,
+          });
+          setTimeout(() => {
+            (window as any).__pendingMusicFile = { fileId: node.id, fileName: node.name };
+          }, 100);
+        }
+      }
+      // Video → Video Player
+      else if (['mp4', 'webm', 'mov', 'avi', 'mkv', 'wmv', 'flv', 'ogv'].includes(ext)) {
+        const app = registry.getApp('videoplayer');
+        if (app) {
+          winStore.openWindow('videoplayer', node.name, {
+            width: app.defaultWidth,
+            height: app.defaultHeight,
+          });
+          setTimeout(() => {
+            (window as any).__pendingVideoFile = { fileId: node.id, fileName: node.name };
+          }, 100);
+        }
+      }
+      // Images → Image Viewer
+      else if (['png', 'jpg', 'jpeg', 'gif', 'bmp', 'svg', 'webp', 'ico'].includes(ext)) {
+        const app = registry.getApp('imageviewer');
+        if (app) {
+          winStore.openWindow('imageviewer', node.name, {
+            width: app.defaultWidth,
+            height: app.defaultHeight,
+          });
+          setTimeout(() => {
+            (window as any).__pendingImageFile = { fileId: node.id, fileName: node.name };
+          }, 100);
+        }
+      }
+      // PDF → PDF Viewer
+      else if (['pdf'].includes(ext)) {
+        const app = registry.getApp('pdfviewer');
+        if (app) {
+          winStore.openWindow('pdfviewer', node.name, {
+            width: app.defaultWidth,
+            height: app.defaultHeight,
+          });
+          setTimeout(() => {
+            (window as any).__pendingPdfFile = { fileId: node.id, fileName: node.name };
+          }, 100);
+        }
+      }
       // Archives → Archive Manager
       else if (['zip', 'tar', 'gz', 'rar', '7z'].includes(ext)) {
         const app = registry.getApp('archiver');
