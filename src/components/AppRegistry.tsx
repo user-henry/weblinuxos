@@ -24,8 +24,62 @@ import StickyNotes from '@/apps/StickyNotes';
 import FontViewer from '@/apps/FontViewer';
 import ArchiveManager from '@/apps/ArchiveManager';
 
+// Development apps
+import CodeEditor from '@/apps/CodeEditor';
+import GitClient from '@/apps/GitClient';
+import ApiClient from '@/apps/ApiClient';
+import Database from '@/apps/Database';
+import RegexBuddy from '@/apps/RegexBuddy';
+import JsonViewer from '@/apps/JsonViewer';
+import ColorPicker from '@/apps/ColorPicker';
+import DiffViewer from '@/apps/DiffViewer';
+
+// Internet apps
+import Email from '@/apps/Email';
+import Chat from '@/apps/Chat';
+import Weather from '@/apps/Weather';
+import Maps from '@/apps/Maps';
+import News from '@/apps/News';
+
+// Office apps
+import Writer from '@/apps/Writer';
+import Spreadsheet from '@/apps/Spreadsheet';
+import Presentation from '@/apps/Presentation';
+import PdfViewer from '@/apps/PdfViewer';
+import Notepad from '@/apps/Notepad';
+
+// Multimedia apps
+import MusicPlayer from '@/apps/MusicPlayer';
+import VideoPlayer from '@/apps/VideoPlayer';
+import ImageViewer from '@/apps/ImageViewer';
+import Camera from '@/apps/Camera';
+import Voice from '@/apps/Voice';
+
+// Graphics apps
+import Paint from '@/apps/Paint';
+import ImageEditor from '@/apps/ImageEditor';
+import SvgViewer from '@/apps/SvgViewer';
+import IconMaker from '@/apps/IconMaker';
+
+// System utilities
+import Screenshot from '@/apps/Screenshot';
+import DiskUsage from '@/apps/DiskUsage';
+import Backup from '@/apps/Backup';
+import FileSearch from '@/apps/FileSearch';
+import Network from '@/apps/Network';
+import Encrypter from '@/apps/Encrypter';
+import Archive from '@/apps/Archive';
+
+// Accessories
+import Help from '@/apps/Help';
+import Trash from '@/apps/Trash';
+import Dictionary from '@/apps/Dictionary';
+import Translator from '@/apps/Translator';
+import Stopwatch from '@/apps/Stopwatch';
+
 // Map app IDs to their component implementations
 const appComponents: Record<string, ComponentType<{ windowId: string }>> = {
+  // System
   terminal: Terminal,
   filemanager: FileManager,
   settings: Settings,
@@ -37,12 +91,67 @@ const appComponents: Record<string, ComponentType<{ windowId: string }>> = {
   markdownviewer: MarkdownEditor,
   systeminfo: SystemInfo,
   browser: Browser,
+
+  // Accessories
   password: PasswordGenerator,
   qrcode: QRCodeGenerator,
   converter: UnitConverter,
   stickynotes: StickyNotes,
   fonts: FontViewer,
   archiver: ArchiveManager,
+
+  // Development
+  codeeditor: CodeEditor,
+  gitclient: GitClient,
+  apiclient: ApiClient,
+  database: Database,
+  regexbuddy: RegexBuddy,
+  jsonviewer: JsonViewer,
+  colorpicker: ColorPicker,
+  diffviewer: DiffViewer,
+
+  // Internet
+  email: Email,
+  chat: Chat,
+  weather: Weather,
+  maps: Maps,
+  news: News,
+
+  // Office
+  writer: Writer,
+  spreadsheet: Spreadsheet,
+  presentation: Presentation,
+  pdfviewer: PdfViewer,
+  notepad: Notepad,
+
+  // Multimedia
+  musicplayer: MusicPlayer,
+  videoplayer: VideoPlayer,
+  imageviewer: ImageViewer,
+  camera: Camera,
+  voice: Voice,
+
+  // Graphics
+  paint: Paint,
+  imageeditor: ImageEditor,
+  svgviewer: SvgViewer,
+  iconmaker: IconMaker,
+
+  // System utilities
+  screenshot: Screenshot,
+  diskusage: DiskUsage,
+  backup: Backup,
+  filesearch: FileSearch,
+  network: Network,
+  encrypter: Encrypter,
+  archive: Archive,
+
+  // More accessories
+  help: Help,
+  trash: Trash,
+  dictionary: Dictionary,
+  translator: Translator,
+  stopwatch: Stopwatch,
 };
 
 // Placeholder for apps not yet implemented

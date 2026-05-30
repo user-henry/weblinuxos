@@ -15,6 +15,7 @@ export interface User {
   username: string;
   password: string;
   avatar: string;
+  isGuest?: boolean;
 }
 
 export interface SystemState {
@@ -30,6 +31,8 @@ export interface SystemState {
   // Actions
   setBootPhase: (phase: BootPhase) => void;
   login: (username: string, password: string) => boolean;
+  loginAsGuest: () => void;
+  switchUser: (user: User) => void;
   logout: () => void;
   bootSequence: () => void;
   setCurrentTime: (time: Date) => void;
@@ -77,6 +80,49 @@ export const useSystemStore = create<SystemState>((set, get) => ({
       return true;
     }
     return false;
+  },
+
+  loginAsGuest: () => {
+    set({
+      user: {
+        username: 'Guest',
+        password: '',
+        avatar: '',
+        isGuest: true,
+      },
+      bootPhase: 'desktop',
+      isLocked: false,
+      notifications: [
+        {
+          id: 'welcome-guest',
+          title: 'Welcome, Guest!',
+          message: 'You are logged in as a guest user. All features are available. Your data will not be saved after logout.',
+          type: 'info',
+          read: false,
+          timestamp: new Date(),
+        },
+      ],
+    });
+  },
+
+  switchUser: (newUser) => {
+    set({
+      user: newUser,
+      bootPhase: 'desktop',
+      isLocked: false,
+      notifications: [
+        {
+          id: `welcome-${Date.now()}`,
+          title: `Welcome, ${newUser.username}!`,
+          message: newUser.isGuest
+            ? 'You are logged in as a guest user. All features are available.'
+            : 'Your WebOS session is ready.',
+          type: 'info',
+          read: false,
+          timestamp: new Date(),
+        },
+      ],
+    });
   },
 
   logout: () => {
