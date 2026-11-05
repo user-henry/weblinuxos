@@ -1,73 +1,69 @@
-# React + TypeScript + Vite
+**简体中文** | [English](README.en.md)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Web Linux OS（weblinuxos）
 
-Currently, two official plugins are available:
+> 一个跑在浏览器里的 Linux 桌面模拟器：从 GRUB 引导、内核日志、登录到完整桌面环境，内置 55 个注册应用、9 大分类与树形虚拟文件系统。
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 功能
 
-## React Compiler
+| 模块 | 说明 |
+|---|---|
+| 启动链路 | GRUB 菜单 → 内核日志滚动 → 登录屏 → 桌面，`bootPhase` 状态机驱动 |
+| 窗口管理 | 拖拽、缩放、最小化/最大化、Z 序、单例/多实例应用 |
+| 应用生态 | 55 条注册应用记录、56 个应用组件，覆盖系统、开发、网络、办公、多媒体、图形、工具等 9 类 |
+| 虚拟文件系统 | 树形节点 + 父指针、权限字符串与属主、复制/剪切/粘贴 |
+| 状态管理 | Zustand 多 store 分治：窗口、应用注册表、文件系统、设置、系统 |
+| 外观 | 主题与强调色通过 CSS 变量注入，Tailwind + shadcn/ui 组件体系 |
+| 交互 | Super 键唤起应用菜单、程序坞、顶栏、桌面图标、右键菜单 |
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 应用分类
 
-## Expanding the ESLint configuration
+| 分类 | 数量 | 示例 |
+|---|---|---|
+| 核心系统 | 8 | 终端、文件管理器、设置、任务管理器、计算器、文本编辑器、日历、时钟 |
+| 开发 | 9 | 代码编辑器、Git 客户端、API 调试、数据库浏览、正则测试、JSON 查看、Markdown 预览、取色器、Diff 对比 |
+| 网络 | 5 | 浏览器、邮件、聊天、天气、新闻 |
+| 办公 | 5 | 文档、表格、演示、PDF 阅读、记事本 |
+| 多媒体 | 5 | 音乐、视频、图片、相机、语音 |
+| 图形 | 4 | 画图、图像编辑、SVG 查看、图标制作 |
+| 系统工具 | 8 | 截图、系统信息、磁盘占用、备份、文件搜索、网络、加密、归档 |
+| 附件 | 5 | 帮助、回收站、词典、翻译、秒表 |
+| 实用附件 | 6 | 密码生成、二维码、单位换算、便签、字体查看、压缩包管理 |
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 技术栈
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+React 19 · TypeScript · Vite 7 · Tailwind CSS 3.4 · shadcn/ui · Zustand · Framer Motion
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 本地运行
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+npm run dev      # 开发服务器
+npm run build    # 生产构建（tsc -b && vite build）
+npm run preview  # 预览构建
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 在线体验
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+<https://user-henry.github.io/weblinuxos/>
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 项目结构
+
+```text
+src/
+├── apps/            # 55+ 个应用（每个目录一个应用）
+├── components/      # 启动序列、桌面、程序坞、顶栏、窗口框架、应用菜单
+├── stores/          # 窗口 / 应用注册表 / 文件系统 / 设置 / 系统
+├── hooks/           # 通用 hooks
+└── main.tsx         # 入口
 ```
+
+## 说明
+
+- 项目是桌面环境与前端工程组织的实验场，应用内的数据多为交互演示，不连接真实后端。
+- 虚拟文件系统驻留在内存/本地状态中，刷新会回到初始镜像。
+- 建议使用较新的 Chrome / Edge / Firefox。
+
+## 许可
+
+MIT License
